@@ -8,6 +8,7 @@
 </head>
 <body>
     <h3>Добро пожаловать:{{auth()->user()->name}}</h3>
+    <a href="{{route('vixod')}}">Vixod</a>
     <a href="{{route('otkrit_schot')}}">Otkrit new schot</a><br>
     <a href="{{route('schot')}}">My Schot</a><br>
     @if(count($errors) > 0)

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,8 +28,10 @@ class AuthRegController extends Controller
         if($registr->fails()){
             return back()->withErrors($registr);
         }
-        User::create(['name' => $request->name, 'phone' => $request->phone, 'email' => $request->email, 'password' => Hash::make($request->password), 'bank' => $request->bank]);
-           return redirect()->route('login_form');
+        $userAut = User::create(['name' => $request->name, 'phone' => $request->phone, 'email' => $request->email, 'password' => Hash::make($request->password), 'bank' => $request->bank]);
+        Order::create(['user_id' => $userAut->id, 'summa' => 0, 'currency' => 'rub']);
+        return redirect()->route('login_form');
+
     }
 
     public function indexLogin(){

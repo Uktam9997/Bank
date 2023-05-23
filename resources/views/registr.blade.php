@@ -20,7 +20,7 @@
     </select>
     <button type="submit">Zaregistrirovatsa</button>
     </form>
-    <p>Vi uje zaregistrirovan ? <a href="{{route('vxod')}}">Voyti v accaunt</a></p>
+    <p>Vi uje zaregistrirovan ? <a href="{{route('login_form')}}">Voyti v accaunt</a></p>
 
    
 </body>

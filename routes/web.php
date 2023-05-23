@@ -14,14 +14,16 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::middleware('guest')->group(function(){
+    Route::get('/registr', [AuthRegController::class, 'indexRegistr'])->name('registr_form');
 
-Route::get('/registr', [AuthRegController::class, 'indexRegistr'])->name('registr_form');
+    Route::get('/', [AuthRegController::class, 'indexLogin'])->name('login_form');
 
-Route::get('/', [AuthRegController::class, 'indexLogin'])->name('login_form');
+    Route::post('/registr', [AuthRegController::class, 'registr'])->name('registr');
 
-Route::post('/registr', [AuthRegController::class, 'registr'])->name('registr');
+    Route::post('/login', [AuthRegController::class, 'login'])->name('login_');
+});
 
-Route::post('/login', [AuthRegController::class, 'login'])->name('login_');
 
 Route::middleware('auth')->group(function(){
 
